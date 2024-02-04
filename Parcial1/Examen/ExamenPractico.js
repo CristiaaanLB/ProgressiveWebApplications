@@ -110,7 +110,7 @@ async function uncompletedTodosIdsAndTitles(){
         const response = await axios.get(url);
 
         response.data.forEach(element => {
-            if (element.completed == false){
+            if (!element.completed){
                 console.log(element.id + " | " + element.title);
             }
         });
@@ -127,7 +127,7 @@ async function completedTodosIdsAndTitles(){
         const response = await axios.get(url);
 
         response.data.forEach(element => {
-            if (element.completed == true){
+            if (element.completed){
                 console.log(element.id + " | " + element.title);
             }
         });
@@ -159,7 +159,7 @@ async function completedTodosIdsAndUserIds(){
         const response = await axios.get(url);
 
         response.data.forEach(element => {
-            if (element.completed == true){
+            if (element.completed){
                 console.log(element.id + " | " + element.userId);
             }
         });
@@ -176,7 +176,7 @@ async function uncompletedTodosIdsAndUserIds(){
         const response = await axios.get(url);
 
         response.data.forEach(element => {
-            if (element.completed == false){
+            if (!element.completed){
                 console.log(element.id + " | " + element.userId);
             }
         });
