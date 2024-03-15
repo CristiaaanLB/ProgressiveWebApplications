@@ -3,14 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <title>NFL: ToDo List</title>
+    <title>NFL: Lista de Pendientes</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    NFL: ToDo List
-    López Bautista Cristian Alexis
+    <div id="header">
+        <h1>NFL: Lista de Pendientes</h1>
+        <h2>López Bautista Cristian Alexis - 10B</h2>
+        <img src="img/logo.png" alt="Logo">
+        <div id="buttons">
+            <button onclick="renderTodos(1)">Lista de todos los pendientes (solo IDs)</button>
+            <button onclick="renderTodos(2)">Lista de todos los pendientes (IDs y Títulos)</button>
+            <button onclick="renderTodos(3)">Lista de todos los pendientes sin resolver (IDs y Títulos)</button>
+            <button onclick="renderTodos(4)">Lista de todos los pendientes resueltos (IDs y Títulos)</button>
+            <button onclick="renderTodos(5)">Lista de todos los pendientes (IDs y UserIDs)</button>
+            <button onclick="renderTodos(6)">Lista de todos los pendientes resueltos (IDs y UserIDs)</button>
+            <button onclick="renderTodos(7)">Lista de todos los pendientes sin resolver (IDs y UserIDs)</button>
+        </div>
+    </div>
 
-    
+    <div id="todosList"></div>
 
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
+<script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('js/sw.js')
+          .then(function(registration) {
+            console.log('Service Worker registrado con éxito:', registration.scope);
+          }, function(err) {
+            console.log('Error al registrar el Service Worker:', err);
+          });
+      });
+    }
+  </script>
