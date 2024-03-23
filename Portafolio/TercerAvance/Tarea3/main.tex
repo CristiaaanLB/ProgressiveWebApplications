@@ -1,0 +1,191 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{pgf}
+% \usepackage[condensed,math]{kurier}
+% \usepackage[T1]{fontenc}
+\usepackage{svg}
+\usepackage{tikz}
+\usepackage{stanli}
+\usepackage{afterpage}
+\usepackage{multirow}
+\usepackage{subfig}
+\usepackage{pgfpages}
+\usepackage{svg}
+\usepackage{rotating}
+
+%\usepackage{times}
+
+
+\pgfpagesdeclarelayout{boxed}
+{
+	\edef\pgfpageoptionborder{0pt}
+}
+{
+	\pgfpagesphysicalpageoptions
+	{%
+		logical pages=1,%
+	}
+	\pgfpageslogicalpageoptions{1}
+	{
+		border code=\pgfsetlinewidth{2pt}\pgfstroke,%
+		border shrink=\pgfpageoptionborder,%
+		resized width=.9\pgfphysicalwidth,%
+		resized height=.9\pgfphysicalheight,%
+		center=\pgfpoint{.5\pgfphysicalwidth}{.5\pgfphysicalheight}%
+	}%
+}
+
+\pgfpagesuselayout{boxed}
+
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[english]{babel}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[a4paper,top=2cm,bottom=1.5cm,left=1.5cm,right=1.5cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\title{}
+\author{}
+\date{}
+
+\begin{document}
+	
+	\newcommand{\subf}[2]{%
+		{\small\begin{tabular}[t]{@{}c@{}}
+				#1\\#2
+		\end{tabular}}%
+	}
+	
+	\begin{titlepage}
+		\begin{center}
+			
+			\textbf{}
+            \includegraphics[width=1\textwidth]{utt.png}
+
+            \vspace*{3cm}
+
+			\vspace{1.5cm}
+			
+			\Huge
+			\textbf{Manifest.js in Progressive Web Applications}
+			
+			\vspace{0.8cm}
+			\large
+			
+			\vspace{0.5cm}
+			\LARGE
+			
+			
+			\vfill
+			
+			
+			
+			\vspace{0.8cm}
+			
+			
+			
+			\Large
+			
+			
+			
+			
+		\end{center}
+		\Large
+		\begin{tabbing}
+			\hspace*{1em}\= \hspace*{8em} \= \kill % set the tabbings
+			\> Name:\>  \textbf{López Bautista Cristian Alexis} \\
+			\> Group:\>  10-B \\
+			\> Subject:\>  Progressive Web Applications  \\
+			\> Professor:  \> Dr. Ray Brunet Parra Galaviz \\
+			\> Date: \>  Wednesday, March 22nd, 2024
+		\end{tabbing}
+		
+	\end{titlepage}
+
+\section{Introduction}
+
+Progressive Web Applications (PWAs) represent a groundbreaking approach to web development, offering users an experience akin to native mobile applications while retaining the versatility and accessibility of traditional web-based platforms. At the heart of PWAs lies the web app manifest, a JSON file providing crucial metadata about the application's identity, appearance, and behavior. This metadata empowers browsers to seamlessly integrate PWAs into users' devices, allowing for features such as offline functionality, push notifications, and installation to the home screen. In this introductory exploration, we delve into the significance of PWAs and the pivotal role of the web app manifest in shaping their user experience and adoption.
+	
+\section{Manifest in Progressive Web Applications}
+
+In the context of Progressive Web Applications (PWAs), a manifest refers to a JSON file called the "web app manifest." The purpose of this manifest is to provide metadata about the web application to the browser, allowing it to behave more like a native mobile application when installed on a device.
+
+\subsection{Purpose}
+
+The web app manifest includes various details such as the application's name, icons, theme colors, display modes, and other settings that influence how the application appears and behaves when launched or installed. This metadata helps the browser understand how to present the web application to users, especially when they add it to their home screen or launch it in fullscreen mode.
+
+\subsection{Example Implementation}
+
+\paragraph{Manifest Example:}
+
+\begin{verbatim}
+{
+  "name": "Example PWA",
+  "short_name": "PWA",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#3367D6",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}
+\end{verbatim}
+
+\paragraph{Manifest Components:}
+
+\begin{itemize}
+    \item \textbf{name}: The full name of the web application.
+    \item \textbf{short\_name}: A shorter name for the application, often used when there's limited space, such as on a mobile device's home screen.
+    \item \textbf{start\_url}: The URL that should be loaded when the application is launched.
+    \item \textbf{display}: Defines how the application should be displayed. Options include \texttt{fullscreen}, \texttt{standalone}, \texttt{minimal-ui}, and \texttt{browser}. This determines whether the app should launch in its own standalone window or within the browser.
+    \item \textbf{background\_color}: The background color of the application.
+    \item \textbf{theme\_color}: The color that the browser's UI should use to customize the appearance when the application is launched.
+    \item \textbf{icons}: An array of icons representing the application. Different sizes may be specified for different contexts, such as different device resolutions.
+\end{itemize}
+
+To implement the manifest, you would typically create a file named \texttt{manifest.json} and include it in the root directory of your web application. Then, you would link to this manifest file from your HTML using a \texttt{<link>} tag:
+
+\begin{verbatim}
+<link rel="manifest" href="/manifest.json">
+\end{verbatim}
+
+Once the manifest is set up, browsers that support PWAs can use this metadata to provide a more immersive and app-like experience when users interact with your web application.
+
+\section{Conclusion}
+
+In conclusion, the web app manifest stands as a cornerstone of Progressive Web Applications, enabling developers to craft immersive, app-like experiences on the web. By harnessing the power of metadata, PWAs blur the lines between traditional websites and native applications, offering users seamless interactions across devices and platforms. As technology continues to evolve, the role of PWAs and their manifests will likely become even more integral in shaping the future of web development, driving innovation and accessibility in the digital landscape.
+
+    \clearpage
+
+	\section{Bibliography}
+
+    \begin{enumerate}
+    
+      \item Web app manifest  |  web.dev. (n. d.). web.dev.
+      
+    \href{https://web.dev/learn/pwa/web-app-manifest}{https://web.dev/learn/pwa/web-app-manifest}
+
+      \item Web app manifests | MDN. (2023, 28 june). MDN Web Docs.
+        
+      \href{https://developer.mozilla.org/en-US/docs/Web/Manifest}{https://developer.mozilla.org/en-US/docs/Web/Manifest}
+      
+    \end{enumerate}
+	
+	
+\end{document}
